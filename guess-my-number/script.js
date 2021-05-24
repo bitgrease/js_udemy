@@ -14,17 +14,24 @@ let highScore = 0;
 document.querySelector('.number').textContent = secretNumber;
 document.querySelector('.check').addEventListener('click', function() {
     const guess = Number(document.querySelector('.guess').value);
-    if(!guess) {
-        document.querySelector('.message').textContent = '👎 No number provided!';
-    } else if(guess === secretNumber) {
-        document.querySelector('.message').textContent = '🎉 Correct Number!';
-    } else if(guess > secretNumber) {
-        score -= 1;
-        document.querySelector('.message').textContent = '🔺 Number is TOO HIGH!';
-        document.querySelector('.score').textContent = score;
-    } else if(guess < secretNumber) {
-        score -= 1;
-        document.querySelector('.message').textContent = '🔻 Number is TOO LOW!';
+    if(score > 1) { 
+       if(!guess) {
+            document.querySelector('.message').textContent = '👎 No number provided!';
+        } else if(guess === secretNumber) {
+            document.querySelector('.message').textContent = '🎉 Correct Number!';
+        } else if(guess > secretNumber) {
+            score -= 1;
+            document.querySelector('.message').textContent = '🔺 Number is TOO HIGH!';
+            document.querySelector('.score').textContent = score;
+        } else if(guess < secretNumber) {
+            score -= 1;
+            document.querySelector('.message').textContent = '🔻 Number is TOO LOW!';
+            document.querySelector('.score').textContent = score;
+        }
+    } else {
+        // Only decrement when score is above zero - prevents going into negative scores.
+        if (score < 0) score--;
+        document.querySelector('.message').textContent = '💥 You lost the game.';
         document.querySelector('.score').textContent = score;
     }
 });
