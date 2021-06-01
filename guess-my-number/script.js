@@ -1,5 +1,9 @@
 'use strict';
 
+// TODO: Refactor game logic and any blocks that can be reusable functions
+// TODO: displayMessage
+// TODO: generateSecretNumber
+// TODO: etc
 // console.log(document.querySelector('.message').textContent);
 // document.querySelector('.message').textContent = 'Correct Number!';
 // document.querySelector('.score').textContent = 21;
