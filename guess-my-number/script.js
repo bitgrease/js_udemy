@@ -22,7 +22,6 @@ document.querySelector('.check').addEventListener('click', function() {
             document.querySelector('.message').textContent = '🎉 Correct Number!';
             document.querySelector('.number').textContent = secretNumber;
             if (Number(document.querySelector('.highscore').textContent) < Number(score)) {
-                console.log(`Setting Highscore: ${document.querySelector('.highscore').textContent} to ${score}`)
                 document.querySelector('.highscore').textContent = score;
             }
         } else if(guess > secretNumber) {
