@@ -1,7 +1,7 @@
 'use strict';
 
 // TODO: Refactor game logic and any blocks that can be reusable functions
-// TODO: displayMessage
+// TODO: setMessage
 // TODO: generateSecretNumber
 // TODO: etc
 // console.log(document.querySelector('.message').textContent);
@@ -15,39 +15,44 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 const initialMessage = 'Start guessing...';
 
+setMessage = (messageString) => {
+    document.querySelector('.message').textContent = messageString;
+};
+
+
 document.querySelector('.check').addEventListener('click', function() {
     const guess = Number(document.querySelector('.guess').value);
     if(score > 1) { 
        if(!guess) {
-            document.querySelector('.message').textContent = '👎 No number provided!';
+            setMessage('👎 No number provided!');
         } else if(guess === secretNumber) {
             document.querySelector('body').style.backgroundColor = '#60b347';
             document.querySelector('.number').style.width = '30rem';
-            document.querySelector('.message').textContent = '🎉 Correct Number!';
+            setMessage('🎉 Correct Number!');
             document.querySelector('.number').textContent = secretNumber;
             if (Number(document.querySelector('.highscore').textContent) < Number(score)) {
                 document.querySelector('.highscore').textContent = score;
             }
         } else if(guess > secretNumber) {
             score -= 1;
-            document.querySelector('.message').textContent = '🔺 Number is TOO HIGH!';
+            setMessage('🔺 Number is TOO HIGH!');
             document.querySelector('.score').textContent = score;
         } else if(guess < secretNumber) {
             score -= 1;
-            document.querySelector('.message').textContent = '🔻 Number is TOO LOW!';
+            setMessage('🔻 Number is TOO LOW!');
             document.querySelector('.score').textContent = score;
         }
     } else {
         // Only decrement when score is above zero - prevents going into negative scores.
         if (score < 0) score--;
-        document.querySelector('.message').textContent = '💥 You lost the game.';
+        setMessage('💥 You lost the game.');
         document.querySelector('.score').textContent = score;
     }
 });
 
 document.querySelector('.again').addEventListener('click', function() {
     score = 20;
-    document.querySelector('.message').textContent = initialMessage;
+    setMessage(initialMessage);
     secretNumber = Math.trunc(Math.random() * 20) + 1;
     document.querySelector('.number').textContent = '?';
     document.querySelector('.number').style.width = '15';
