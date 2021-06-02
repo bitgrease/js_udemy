@@ -1,8 +1,6 @@
 'use strict';
 
 // TODO: Refactor game logic and any blocks that can be reusable functions
-// TODO: setMessage
-// TODO: generateSecretNumber
 // TODO: etc
 // console.log(document.querySelector('.message').textContent);
 // document.querySelector('.message').textContent = 'Correct Number!';
@@ -11,14 +9,18 @@
 
 // document.querySelector('.guess').value = 23;
 // console.log(document.querySelector('.guess').value)
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
-const initialMessage = 'Start guessing...';
-
 setMessage = (messageString) => {
     document.querySelector('.message').textContent = messageString;
 };
 
+generateNumber = () => {
+    return Math.trunc(Math.random() * 20) + 1;
+};
+
+
+let secretNumber = generateNumber();
+let score = 20;
+const initialMessage = 'Start guessing...';
 
 document.querySelector('.check').addEventListener('click', function() {
     const guess = Number(document.querySelector('.guess').value);
@@ -53,7 +55,7 @@ document.querySelector('.check').addEventListener('click', function() {
 document.querySelector('.again').addEventListener('click', function() {
     score = 20;
     setMessage(initialMessage);
-    secretNumber = Math.trunc(Math.random() * 20) + 1;
+    secretNumber = generateNumber();
     document.querySelector('.number').textContent = '?';
     document.querySelector('.number').style.width = '15';
     document.querySelector('body').style.background = "#222"
