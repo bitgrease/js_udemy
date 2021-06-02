@@ -1,7 +1,6 @@
 'use strict';
 
-// TODO: Refactor game logic and any blocks that can be reusable functions
-// TODO: etc
+// TODO: Refactor game logic
 // console.log(document.querySelector('.message').textContent);
 // document.querySelector('.message').textContent = 'Correct Number!';
 // document.querySelector('.score').textContent = 21;
@@ -9,14 +8,13 @@
 
 // document.querySelector('.guess').value = 23;
 // console.log(document.querySelector('.guess').value)
-setMessage = (messageString) => {
+const setMessage = (messageString) => {
     document.querySelector('.message').textContent = messageString;
 };
 
-generateNumber = () => {
+const generateNumber = () => {
     return Math.trunc(Math.random() * 20) + 1;
 };
-
 
 let secretNumber = generateNumber();
 let score = 20;
