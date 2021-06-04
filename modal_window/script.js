@@ -8,6 +8,13 @@ console.log(btnsShowModal);
 
 btnsShowModal.forEach(btn => {
     btn.addEventListener('click', function() {
-        console.log(btn.textContent);
+        // Can remove multiple classes as comma separated arguments
+        modal.classList.remove('hidden');
+        overlay.classList.remove('hidden');
     })
+});
+
+btnCloseModal.addEventListener('click', function() {
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden')
 });
