@@ -4,7 +4,6 @@ const modal = document.querySelector('.modal');
 const btnCloseModal = document.querySelector('.close-modal');
 const overlay = document.querySelector('.overlay');
 const btnsShowModal = document.querySelectorAll('.show-modal');
-console.log(btnsShowModal);
 
 const hideModalandOverlay = function() {
     modal.classList.add('hidden');
@@ -21,3 +20,11 @@ btnsShowModal.forEach(btn => {
 
 btnCloseModal.addEventListener('click', hideModalandOverlay);
 overlay.addEventListener('click', hideModalandOverlay);
+
+// Add listener to document to close modal on "Escape" key press
+
+document.addEventListener('keydown', function(e) {
+    if(e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        hideModalandOverlay();
+    };
+});

@@ -73,6 +73,10 @@ p {
   z-index: 10;
 }
 
+button.show-modal:focus-visible {
+  outline: none;
+}
+
 .overlay {
   position: absolute;
   top: 0;
